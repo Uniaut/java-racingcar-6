@@ -1,9 +1,15 @@
-package racingcar.view;
+package racingcar.model;
 
 import static org.assertj.core.api.Assertions.*;
 
 import java.util.List;
 import org.junit.jupiter.api.Test;
+import racingcar.view.CarNamesParser;
+import racingcar.view.CarNamesValidator;
+import racingcar.view.InputParser;
+import racingcar.view.InputValidator;
+import racingcar.view.NumberAttemptsParser;
+import racingcar.view.NumberAttemptsValidator;
 
 public class ValidatorParserTest {
     @Test
