@@ -1,6 +1,4 @@
-package racingcar.view;
-
-import camp.nextstep.edu.missionutils.Console;
+package racingcar.model;
 
 public class InputHandler {
     private final InputValidator inputValidator;
@@ -11,8 +9,7 @@ public class InputHandler {
         this.inputParser = inputParser;
     }
 
-    public Object handle() {
-        String input = Console.readLine();
+    public Object handle(String input) {
         inputValidator.validate(input);
         return inputParser.parse(input);
     }

@@ -1,4 +1,4 @@
-package racingcar.view;
+package racingcar.model;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

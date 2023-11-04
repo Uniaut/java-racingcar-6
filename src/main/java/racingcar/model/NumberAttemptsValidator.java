@@ -1,4 +1,4 @@
-package racingcar.view;
+package racingcar.model;
 
 public class NumberAttemptsValidator implements InputValidator {
     @Override

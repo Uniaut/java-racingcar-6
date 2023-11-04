@@ -1,15 +1,11 @@
 package racingcar.model;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 import java.util.List;
 import org.junit.jupiter.api.Test;
-import racingcar.view.CarNamesParser;
-import racingcar.view.CarNamesValidator;
-import racingcar.view.InputParser;
-import racingcar.view.InputValidator;
-import racingcar.view.NumberAttemptsParser;
-import racingcar.view.NumberAttemptsValidator;
 
 public class ValidatorParserTest {
     @Test
