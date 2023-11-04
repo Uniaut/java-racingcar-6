@@ -19,7 +19,7 @@ public class Race {
         this.carNames = carNames;
         cars = new HashMap<>();
         for (String name : carNames) {
-            cars.put(name, new Car(name));
+            cars.put(name, new Car());
         }
     }
 

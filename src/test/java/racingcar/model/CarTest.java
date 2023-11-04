@@ -9,7 +9,7 @@ public class CarTest {
 
     @Test
     void 전진_후_거리_확인() {
-        Car car = new Car("Test");
+        Car car = new Car();
         assertThat(car.getDistance())
                 .isEqualTo(0);
         car.advance();
