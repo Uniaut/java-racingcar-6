@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.*;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
-public class GameViewTest {
+public class ValidatorParserTest {
     @Test
     void 자동차_이름_올바른_형식() {
         InputValidator inputValidator = new CarNamesValidator();
