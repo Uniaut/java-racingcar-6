@@ -12,6 +12,10 @@ public class Race {
     private final List<String> carNames;
     private final Map<String, Car> cars;
 
+    private static final int RANDOM_NUMBER_MIN = 0;
+    private static final int RANDOM_NUMBER_MAX = 9;
+    private static final int RANDOM_NUMBER_GTE_CONDITION = 4;
+
     public Race(List<String> carNames) {
         validateCarNames(carNames);
 
@@ -40,7 +44,9 @@ public class Race {
     }
 
     private void randomAdvance(Car car) {
-        if (Randoms.pickNumberInRange(0, 9) >= 4) {
+        int randomNumber = Randoms.pickNumberInRange(
+                RANDOM_NUMBER_MIN, RANDOM_NUMBER_MAX);
+        if (randomNumber >= RANDOM_NUMBER_GTE_CONDITION) {
             car.advance();
         }
     }
