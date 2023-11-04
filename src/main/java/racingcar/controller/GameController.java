@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import java.util.List;
+import racingcar.dto.ConsoleInput;
 import racingcar.model.CarNamesParser;
 import racingcar.model.CarNamesValidator;
 import racingcar.model.InputHandler;
@@ -15,18 +16,24 @@ public class GameController {
     private final GameView gameView;
     private final RaceView raceView;
 
+    private ConsoleInput carNamesInput;
+    private ConsoleInput numberAttemptsInput;
+
     public GameController() {
         gameView = new GameView();
         raceView = new RaceView();
     }
 
-    public void run() {
-        String carNamesInput = gameView.askCarNames();
-        String numberAttemptsInput = gameView.askNumberAttempts();
+    private void askSettings() {
+        carNamesInput = gameView.askCarNames();
+        numberAttemptsInput = gameView.askNumberAttempts();
+    }
 
-        InputHandler<List<String>> carNamesHandler = new InputHandler<>(new CarNamesValidator(), new CarNamesParser());
-        InputHandler<Integer> numberAttemptsHandler = new InputHandler<>(new NumberAttemptsValidator(),
-                new NumberAttemptsParser());
+    private void runRace() {
+        InputHandler<List<String>> carNamesHandler = new InputHandler<>(
+                new CarNamesValidator(), new CarNamesParser());
+        InputHandler<Integer> numberAttemptsHandler = new InputHandler<>(
+                new NumberAttemptsValidator(), new NumberAttemptsParser());
 
         List<String> carNames = carNamesHandler.handle(carNamesInput);
         Integer numberAttempts = numberAttemptsHandler.handle(numberAttemptsInput);
@@ -39,5 +46,11 @@ public class GameController {
             raceView.printRace(race);
         }
         raceView.printWinner(race);
+    }
+
+    public void run() {
+        askSettings();
+
+        runRace();
     }
 }
