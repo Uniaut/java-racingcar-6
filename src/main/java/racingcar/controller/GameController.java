@@ -19,6 +19,8 @@ public class GameController {
     private ConsoleInput carNamesInput;
     private ConsoleInput numberAttemptsInput;
 
+    private Race race;
+
     public GameController() {
         gameView = new GameView();
         raceView = new RaceView();
@@ -29,16 +31,20 @@ public class GameController {
         numberAttemptsInput = gameView.askNumberAttempts();
     }
 
-    private void runRace() {
+    private void readyRace() {
         InputHandler<List<String>> carNamesHandler = new InputHandler<>(
                 new CarNamesValidator(), new CarNamesParser());
+
+        List<String> carNames = carNamesHandler.handle(carNamesInput);
+
+        race = new Race(carNames);
+    }
+
+    private void runRace() {
         InputHandler<Integer> numberAttemptsHandler = new InputHandler<>(
                 new NumberAttemptsValidator(), new NumberAttemptsParser());
 
-        List<String> carNames = carNamesHandler.handle(carNamesInput);
         Integer numberAttempts = numberAttemptsHandler.handle(numberAttemptsInput);
-
-        Race race = new Race(carNames);
 
         raceView.printRaceIntro();
         for (int i = 0; i < numberAttempts; i++) {
@@ -50,6 +56,8 @@ public class GameController {
 
     public void run() {
         askSettings();
+
+        readyRace();
 
         runRace();
     }
