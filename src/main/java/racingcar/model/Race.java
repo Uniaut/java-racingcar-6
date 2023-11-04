@@ -1,10 +1,10 @@
 package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.TreeMap;
 import java.util.stream.Collectors;
 import org.assertj.core.util.Sets;
 
@@ -52,12 +52,12 @@ public class Race {
     }
 
     public List<String> getWinnerNames() {
+        Integer maxDistance = carNames.stream()
+                .map(this::getDistance)
+                .max(Comparator.comparing(x -> x))
+                .orElse(0);
         return carNames.stream()
-                .collect(Collectors.groupingBy(
-                        this::getDistance,
-                        TreeMap::new,
-                        Collectors.toList()))
-                .lastEntry()
-                .getValue();
+                .filter(name -> maxDistance.equals(getDistance(name)))
+                .toList();
     }
 }
