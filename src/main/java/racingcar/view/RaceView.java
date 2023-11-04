@@ -4,11 +4,14 @@ import java.util.List;
 import racingcar.model.Race;
 
 public class RaceView {
+    private static final String RACE_INTRO_TEXT = "\n실행 결과";
+    private static final String RACE_WINNER_TEXT = "최종 우승자 : ";
+
     public RaceView() {
     }
 
     public void printRaceIntro() {
-        System.out.println("\n실행 결과");
+        System.out.println(RACE_INTRO_TEXT);
     }
 
     private String renderCarState(String carName, int distance) {
@@ -25,6 +28,6 @@ public class RaceView {
 
     public void printWinner(Race race) {
         List<String> winnerNames = race.getWinnerNames();
-        System.out.println("최종 우승자 : " + String.join(", ", winnerNames));
+        System.out.println(RACE_WINNER_TEXT + String.join(", ", winnerNames));
     }
 }
