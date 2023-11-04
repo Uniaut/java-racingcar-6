@@ -1,7 +1,6 @@
 package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -17,10 +16,8 @@ public class Race {
         validateCarNames(carNames);
 
         this.carNames = carNames;
-        cars = new HashMap<>();
-        for (String name : carNames) {
-            cars.put(name, new Car());
-        }
+        cars = carNames.stream()
+                .collect(Collectors.toMap(n -> n, n -> new Car()));
     }
 
     private void validateCarNames(List<String> carNames) {
@@ -62,6 +59,5 @@ public class Race {
                         Collectors.toList()))
                 .lastEntry()
                 .getValue();
-
     }
 }
